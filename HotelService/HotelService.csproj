@@ -5,10 +5,29 @@
     <AspNetCoreHostingModel>InProcess</AspNetCoreHostingModel>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Compile Remove="Migrations\20190428135441_Initial.cs" />
+    <Compile Remove="Migrations\20190428135441_Initial.Designer.cs" />
+    <Compile Remove="Migrations\20190428140542_Initial.cs" />
+    <Compile Remove="Migrations\20190428140542_Initial.Designer.cs" />
+    <Compile Remove="Migrations\20190428145252_Initial.cs" />
+    <Compile Remove="Migrations\20190428145252_Initial.Designer.cs" />
+    <Compile Remove="Migrations\20190428151827_Initial.cs" />
+    <Compile Remove="Migrations\20190428151827_Initial.Designer.cs" />
+    <Compile Remove="Migrations\20190428152058_Initial.cs" />
+    <Compile Remove="Migrations\20190428152058_Initial.Designer.cs" />
+    <Compile Remove="Migrations\20190509110610_Initial.cs" />
+    <Compile Remove="Migrations\20190509110610_Initial.Designer.cs" />
+  </ItemGroup>
+
 
   <ItemGroup>
+    <PackageReference Include="BuildBundlerMinifier" Version="2.9.406" />
     <PackageReference Include="Microsoft.AspNetCore.App" />
+    <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="2.2.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Razor" Version="2.2.0" />
     <PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.2.0" PrivateAssets="All" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.2.3" />
   </ItemGroup>
 
 </Project>

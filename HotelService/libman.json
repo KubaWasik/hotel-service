@@ -1,0 +1,43 @@
+{
+  "version": "1.0",
+  "defaultProvider": "cdnjs",
+  "libraries": [
+    {
+      "library": "feather-icons@4.21.0",
+      "destination": "wwwroot/lib/feather-icons/",
+      "files": [
+        "feather.min.js",
+        "feather.min.js.map"
+      ]
+    },
+    {
+      "provider": "cdnjs",
+      "library": "twitter-bootstrap@4.3.1",
+      "destination": "wwwroot/lib/twitter-bootstrap/",
+      "files": [
+        "js/bootstrap.min.js",
+        "css/bootstrap.min.css",
+        "css/bootstrap.min.css.map",
+        "js/bootstrap.min.js.map"
+      ]
+    },
+    {
+      "provider": "cdnjs",
+      "library": "popper.js@1.15.0",
+      "destination": "wwwroot/lib/popper.js/",
+      "files": [
+        "umd/popper.min.js",
+        "umd/popper.min.js.map"
+      ]
+    },
+    {
+      "provider": "cdnjs",
+      "library": "jquery@3.4.1",
+      "destination": "wwwroot/lib/jquery/",
+      "files": [
+        "jquery.min.js",
+        "jquery.min.map"
+      ]
+    }
+  ]
+}

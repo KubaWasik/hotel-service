@@ -6,55 +6,134 @@
     <title>@ViewData["Title"] - HotelService</title>
 
     <environment include="Development">
-        <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
+        <link rel="stylesheet" href="~/lib/twitter-bootstrap/css/bootstrap.min.css" />
     </environment>
     <environment exclude="Development">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css"
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
               asp-fallback-href="~/lib/bootstrap/dist/css/bootstrap.min.css"
               asp-fallback-test-class="sr-only" asp-fallback-test-property="position" asp-fallback-test-value="absolute"
-              crossorigin="anonymous"
-              integrity="sha256-eSi1q2PG6J7g7ib17yAaWMcrr5GrtohYChqibrV7PBE="/>
+              integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+              crossorigin="anonymous">
     </environment>
-    <link rel="stylesheet" href="~/css/site.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true"/>
+    @RenderSection("Styles", required: false)
 </head>
 <body>
-    <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-            <div class="container">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">HotelService</a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
-                    <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </nav>
-    </header>
     <div class="container">
-        <partial name="_CookieConsentPartial" />
-        <main role="main" class="pb-3">
-            @RenderBody()
-        </main>
-    </div>
+        <header>
+            <nav class="navbar navbar-dark fixed-top bg-dark flex-md-nowrap p-0 shadow">
+                <a asp-controller="Home" asp-action="Index" class="navbar-brand col-sm-3 col-md-2 mr-0">Hotel</a>
+            </nav>
+        </header>
+        <div class="container-fluid">
+            <div class="row">
+                <nav class="col-md-2 d-none d-md-block bg-light sidebar">
+                    <div class="sidebar-sticky">
+                        <ul class="nav flex-column">
+                            <li class="nav-item">
+                                <a asp-controller="Reservations" asp-action="Index" id="Reservations" class="nav-link">
+                                    <i data-feather="calendar"></i>
+                                    Rezerwacje <span class="sr-only">(current)</span>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a asp-controller="Rooms" asp-action="Index" id="Rooms" class="nav-link">
+                                    <i data-feather="home"></i>
+                                    Pokoje
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a asp-controller="Guests" asp-action="Index" id="Guests" class="nav-link">
+                                    <i data-feather="users"></i>
+                                    Goście
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a asp-controller="Payments" asp-action="Index" id="Payments" class="nav-link">
+                                    <i data-feather="credit-card"></i>
+                                    Płatności
+                                </a>
+                            </li>
+                        </ul>
 
-    <footer class="border-top footer text-muted">
-        <div class="container">
-            &copy; 2019 - HotelService - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+                        <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
+                            <span>Dodaj</span>
+                            <a class="d-flex align-items-center text-muted">
+                                <i data-feather="plus-circle"></i>
+                            </a>
+                        </h6>
+                        <ul class="nav flex-column mb-2">
+                            <li class="nav-item">
+                                <a asp-controller="Reservations" asp-action="Create" class="nav-link">
+                                    <i data-feather="calendar"></i>
+                                    Dodaj rezerwację
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a asp-controller="Guests" asp-action="Create" class="nav-link">
+                                    <i data-feather="user-plus"></i>
+                                    Dodaj gościa
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a asp-controller="Rooms" asp-action="Create" class="nav-link">
+                                    <i data-feather="home"></i>
+                                    Dodaj pokój
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a asp-controller="Payments" asp-action="Create" class="nav-link">
+                                    <i data-feather="dollar-sign"></i>
+                                    Dodaj płatność
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </nav>
+                <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
+                    @RenderBody()
+                </main>
+            </div>
         </div>
-    </footer>
+    </div>
+    @*<header>
+            <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+                <div class="container">
+                    <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">HotelService</a>
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                            aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
+                        <ul class="navbar-nav flex-grow-1">
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+        </header>
+        <div class="container">
+            <main role="main" class="pb-3">
+                @RenderBody()
+            </main>
+        </div>
+
+        <footer class="border-top footer text-muted">
+            <div class="container">
+                &copy; 2019 - HotelService - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+            </div>
+        </footer>*@
 
     <environment include="Development">
-        <script src="~/lib/jquery/dist/jquery.js"></script>
-        <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.js"></script>
+        <script src="~/lib/jquery/jquery.min.js"></script>
+        <script src="~/lib/popper.js/umd/popper.min.js"></script>
+        <script src="~/lib/twitter-bootstrap/js/bootstrap.min.js"></script>
+        <script src="~/lib/feather-icons/feather.min.js"></script>
     </environment>
     <environment exclude="Development">
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"
@@ -63,14 +142,29 @@
                 crossorigin="anonymous"
                 integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=">
         </script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+                asp-fallback-src="~/lib/popper.js/umd/popper.min.js"
+                asp-fallback-test="window.Popper"
+                integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+                crossorigin="anonymous">
+        </script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/js/bootstrap.bundle.min.js"
                 asp-fallback-src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"
                 asp-fallback-test="window.jQuery && window.jQuery.fn && window.jQuery.fn.modal"
                 crossorigin="anonymous"
                 integrity="sha256-E/V4cWE4qvAeO5MOhjtGtqDzPndRO1LBk8lJ/PR7CA4=">
         </script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/feather-icons/4.21.0/feather.min.js"
+                asp-fallback-src="~/lib/feather-icons/feather.min.js"
+                asp-fallback-test="feather.replace()"
+                integrity="sha256-qBd447qJjlY5iM+wziRXC/fp1ZS/VF7b0pXn8iANAps="
+                crossorigin="anonymous">
+        </script>
     </environment>
     <script src="~/js/site.js" asp-append-version="true"></script>
+    <script>
+        $("a#@(ViewContext.RouteData.Values["Controller"])").addClass("active");
+    </script>
 
     @RenderSection("Scripts", required: false)
 </body>
